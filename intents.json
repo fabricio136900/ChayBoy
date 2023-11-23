@@ -2,7 +2,7 @@
     {
         "tag": "saludo",
         "patterns":["hola","qué tal","cómo estas","saludos"],
-        "responses"["Hola!", "Buenos días","¿Cómo estas?"]
+        "responses"["hola!","buenos días","¿Cómo estas?"]
     },
     {
         "tag": "nombre",
