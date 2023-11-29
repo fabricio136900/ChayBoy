@@ -30,3 +30,28 @@ def bag_of_words(sentence):
                 bag[i] = 1
     print(bag)
     return np.array(bag)
+
+#Predecimos la categoría a la que pertenece la oración
+def predict_class(sentence):
+    bow = bag_of_words(sentence)
+    res = model.predict(np.array([bow]))[0]
+    max_index = np.where(res ==np.max(res))[0][0]
+    category = classes[max_index]
+    return category
+
+#Obtenemos una respuesta aleatoria
+def get_response(tag, intents_json):
+    list_of_intents = intents_json['intents']
+    result = ""
+    for i in list_of_intents:
+        if i["tag"]==tag:
+            result = random.choice(i['responses'])
+            break
+    return result
+
+#Ejecutamos el chat en bucle
+while True:
+    message=input("")
+    ints = predict_class(message)
+    res = get_response(ints, intents)
+    print(res)
